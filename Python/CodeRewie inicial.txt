@@ -1,0 +1,13 @@
+Code Review Crítico da Solução Inicial (Python)
+
+Após a análise do código gerado na iteração inicial, foram identificadas falhas de eficiência, violação de requisitos do projeto e inconsistências no uso das estruturas de dados do Python:
+
+Incoerência no Uso do Módulo array: O modelo importou a biblioteca from array import array, porém inicializou o armazenamento como uma lista nativa de Python (self.dados = []). Isso descumpre diretamente a exigência do enunciado de utilizar uma instância da classe array.
+
+Crescimento Dinâmico Indevido: Ao utilizar os métodos .append() e .pop(), a lista expande e encolhe fisicamente no heap em tempo de execução. Uma pilha com capacidade física fixa deve alocar todo o seu espaço no momento da inicialização e gerenciar as posições ativas apenas por um ponteiro de índice/quantidade.
+
+Ausência de Mapeamento de Typecodes: A implementação inicial não fez a correspondência entre os tipos permitidos (int, float, str) e os typecodes nativos exigidos pela biblioteca array ('q' para inteiros de 64 bits, 'd' para ponto flutuante de dupla precisão e 'u' para caracteres Unicode).
+
+Falta de Checagem Rígida de Tipos: A lista nativa do Python aceita qualquer tipo de dado heterogêneo na mesma instância. Sem a validação estrita no construtor e no método empilha(), era possível inserir inteiros, textos e floats dentro da mesma pilha.
+
+Comportamento Incompleto no Método troca(): A versão inicial executava a troca apenas se len(self.dados) >= 2, mas silenciava a operação sem disparar nenhuma exceção (PilhaVaziaErro) caso a pilha tivesse menos de 2 elementos, gerando um estado omisso em falhas.

@@ -1,0 +1,14 @@
+Log de Iteração e Prompts — Refatoração
+
+Prompt Enviado para a Refatoração:
+Refatore a implementação da classe Pilha em Python para atender rigorosamente aos requisitos do professor. O código deve:
+
+Instanciar fisicamente a classe array da biblioteca padrão do Python no método init, definindo o typecode adequado ('q' para int, 'd' para float e 'u' para str/caractere) e prealocando a capacidade total do vetor em memória.
+
+Controlar o topo da pilha por meio de um ponteiro de quantidade (self.quantidade) para garantir tempo de execução O(1) sem alterar fisicamente a estrutura do array (sem utilizar os métodos append ou pop).
+
+Implementar validação estrita do tipo de dado recebido no método empilha(dado), exigindo que pilhas do tipo str aceitem exclusivamente um único caractere (len(dado) == 1).
+
+Garantir que o método troca() inverta as posições do elemento do topo com o elemento imediatamente abaixo, disparando a exceção PilhaVaziaErro caso a pilha contenha menos de 2 elementos.
+
+Manter o tratamento de erros através das exceções customizadas PilhaCheiaErro, PilhaVaziaErro e TipoErro.
