@@ -1,0 +1,7 @@
+1. Garantia de Alocação Estática e Memória Contígua via TypedArrayA substituição do Array nativo por instâncias especializadas de TypedArray (Int32Array, Float64Array e Uint16Array) resolve a fragilidade de alocação física no V8 Engine. Um TypedArray aloca um buffer binário contíguo (ArrayBuffer) de tamanho fixo na criação da instância, impedindo o redimensionamento em tempo de execução.
+
+2. Complexidade Determinística $O(1)$ sem Métodos de RedimensionamentoA eliminação do uso de .push() e .pop() desvincula a estrutura das operações dinâmicas do interpretador. O topo é gerenciado exclusivamente pelo ponteiro numérico this.quantidade. As operações de inserção, remoção e troca ocorrem via manipulação direta de índices do vetor, operando em tempo estritamente constante $O(1)$.
+
+3. Validação Estrita de Tipagem e Mapeamento do Tipo CharComo JavaScript não disponibiliza o tipo nativo char, a refatoração utilizou o Uint16Array para armazenar o valor numérico dos caracteres (code units UTF-16 via charCodeAt). A inclusão de verificações explícitas no método empilha() impede a mistura de tipos de dados e bloqueia cadeias de texto longas (exigindo length === 1).
+
+4. Robustez no Tratamento de Exceções de LimiteA refatoração ajustou o método troca() e as operações de remoção para verificar o ponteiro de estado antes do acesso à memória. Caso a condição mínima não seja satisfeita (pilha vazia ou com menos de 2 elementos), a exceção customizada PilhaVaziaErro é disparada imediatamente, garantindo que o programa reaja adequadamente a falhas sem comportamento omisso.
