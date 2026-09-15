@@ -49,6 +49,4 @@ sempre que um novo trabalho for iniciado.
 | Emanuel Cardoso | 122033151 |
 | Alanna Figueiredo Simões | 120053919 |
 | Felipe Rodrigues Schoeffer | 123311188 |
-| Artur de Melo Brito | 117224234 |
-| Matheus de Sousa | 123536584 |
-| _(adicionar novo integrante aqui)_ | |
+| Artur de Melo Brito | 117224234 | |
